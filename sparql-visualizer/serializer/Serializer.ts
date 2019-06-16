@@ -6,13 +6,13 @@ export function getVisualization(
     endpoint: WikidataEndpoint,
     visId: VisualisationIdentifier
 ): HTMLElement {
-    const query: string = data.children[0].innerHTML;
+    // const query: string = data.children[0].innerHTML;
     let visElement: HTMLElement;
 
     if (visId === 'Table') {
         visElement = getTable();
     } else {
-        visElement = getIFrame();
+        visElement = getIFrame(data, endpoint, visId);
     }
     return visElement;
 }
@@ -42,7 +42,11 @@ function getTable(): HTMLElement {
     return table;
 }
 
-function getIFrame(): HTMLElement {
+function getIFrame(
+    data: HTMLElement,
+    endpoint: WikidataEndpoint,
+    visId: VisualisationIdentifier
+): HTMLElement {
     const iframe = document.createElement(`iframe`);
     iframe.setAttribute(
         'src',
