@@ -5,6 +5,11 @@ export const DEFAULT_WIKIDATA_CONFIG: Required<WikidataEndpointConfig> = {
     httpProtocol: 'https'
 };
 
+export const FU_WIKIDATA_CONFIG: Required<WikidataEndpointConfig> = {
+    host: 'aghcc-edu01.imp.fu-berlin.de',
+    httpProtocol: 'http'
+};
+
 export class WikidataEndpoint {
     private readonly configuration: Required<WikidataEndpointConfig>;
 

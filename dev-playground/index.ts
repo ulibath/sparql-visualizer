@@ -1,5 +1,9 @@
-import { VisualisationIdentifier } from '../sparql-visualizer/visualizations/graphical/index.types';
-import { WikidataEndpoint, WikidataEndpointConfig } from '../sparql-visualizer/wikidata-endpoint';
+import { VisualisationIdentifier } from '../sparql-visualizer/visualizations/index.types';
+import { WikidataEndpoint } from '../sparql-visualizer/wikidata-endpoint';
+import {
+    DEFAULT_WIKIDATA_CONFIG,
+    FU_WIKIDATA_CONFIG
+} from '../sparql-visualizer/wikidata-endpoint/Endpoint';
 import './style.scss';
 
 const endpointList: WikidataEndpoint[] = [];
@@ -12,18 +16,8 @@ init();
 // TODO init serializer
 
 export function init(): void {
-    const wikidataEndpoint: WikidataEndpointConfig = {
-        host: 'wikidata.org',
-        httpProtocol: 'https',
-        port: 0
-    };
-    const fuEndpoint: WikidataEndpointConfig = {
-        host: 'aghcc-edu01.imp.fu-berlin.de',
-        httpProtocol: 'http',
-        port: 0
-    };
-    endpointList.push(new WikidataEndpoint(wikidataEndpoint));
-    endpointList.push(new WikidataEndpoint(fuEndpoint));
+    endpointList.push(new WikidataEndpoint(DEFAULT_WIKIDATA_CONFIG));
+    endpointList.push(new WikidataEndpoint(FU_WIKIDATA_CONFIG));
 
     visIdList.push(
         'BubbleChart',
@@ -49,23 +43,21 @@ export function init(): void {
         'select-endpoint',
         endpointList
     );
-    const refreshButton: HTMLButtonElement | null = (
-        document.getElementById('refresh-button')
+    const refreshButton: HTMLButtonElement | null = document.getElementById(
+        'refresh-button'
     ) as HTMLButtonElement;
 
     if (visIdSelection) {
-        visIdSelection.addEventListener('change', function(event) {
+        visIdSelection.addEventListener('change', (event: Event) => {
             if (event.target instanceof HTMLSelectElement) {
-                const value: number = Number.parseInt(event.target.value, 10);
-                selectedVisIdPosition = value;
+                selectedVisIdPosition = Number.parseInt(event.target.value, 10);
             }
         });
     }
     if (endpointSelection) {
-        endpointSelection.addEventListener('change', function(event) {
+        endpointSelection.addEventListener('change', (event: Event) => {
             if (event.target instanceof HTMLSelectElement) {
-                const value: number = Number.parseInt(event.target.value, 10);
-                selectedEndpointPosition = value;
+                selectedEndpointPosition = Number.parseInt(event.target.value, 10);
             }
         });
     }
@@ -77,7 +69,9 @@ export function init(): void {
 }
 
 export function addDropdownSelection(id: string, options: Object[]): HTMLSelectElement {
-    const selectElement: HTMLSelectElement | null = document.getElementById(id) as HTMLSelectElement;
+    const selectElement: HTMLSelectElement | null = document.getElementById(
+        id
+    ) as HTMLSelectElement;
     if (selectElement) {
         options.forEach((option: any, index) => {
             const tmpOption: HTMLOptionElement = document.createElement('option');
