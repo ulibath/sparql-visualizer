@@ -15,6 +15,10 @@ export class WikidataEndpoint {
         this.configuration = { ...DEFAULT_WIKIDATA_CONFIG, ...configuration };
     }
 
+    public toString(): string {
+        return this.configuration.host;
+    }
+
     public getSPARQLQueryURL(): string {
         return this.getBaseUrl();
     }
