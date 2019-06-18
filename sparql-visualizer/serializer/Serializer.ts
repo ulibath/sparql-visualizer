@@ -8,11 +8,10 @@ export function getVisualization(
 ): HTMLElement {
     // const query: string = data.children[0].innerHTML;
     let visElement: HTMLElement;
-
     if (visId === 'Table') {
         visElement = getTable();
     } else {
-        visElement = getIFrame(data, endpoint, visId);
+        visElement = createGraphElement;
     }
     return visElement;
 }
@@ -47,6 +46,9 @@ function getIFrame(
     endpoint: WikidataEndpoint,
     visId: VisualisationIdentifier
 ): HTMLElement {
+    data.dir;
+    endpoint.getConfiguration();
+    visId.fontsize;
     const iframe = document.createElement(`iframe`);
     iframe.setAttribute(
         'src',
