@@ -1,7 +1,7 @@
 type WikidataEndpointConfig = import('./index.types').WikidataEndpointConfig;
 
 export const DEFAULT_WIKIDATA_CONFIG: Required<WikidataEndpointConfig> = {
-    host: 'query-wikidata.org',
+    host: 'query.wikidata.org',
     httpProtocol: 'https'
 };
 

@@ -27,3 +27,5 @@ export const VISUALIZATION_TYPES_LIST: VisualisationIdentifier[] = [
 ];
 
 export const IFRAME_CLASS: string = 'resp-iframe';
+
+export const DATA_ATTRBIUTE_NAME: string = '[data-visualisation]';

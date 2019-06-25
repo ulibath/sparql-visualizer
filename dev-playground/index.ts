@@ -1,3 +1,4 @@
+import { SPARQLvisualizer } from '../sparql-visualizer/serializer';
 import './style.scss';
 import { ENDPOINT_LIST, VISUALIZATION_TYPES_LIST } from './variables';
 
@@ -5,6 +6,11 @@ init();
 
 export function init(): void {
     // TODO init serializer
+    const serializer: SPARQLvisualizer = new SPARQLvisualizer();
+    serializer
+        .setEndpoint(ENDPOINT_LIST[0])
+        .setVisId(VISUALIZATION_TYPES_LIST[0])
+        .build();
 
     const visIdSelection: HTMLSelectElement | null = addDropdownSelection(
         'select-chart',

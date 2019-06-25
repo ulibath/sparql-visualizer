@@ -1,3 +1,4 @@
+import { createGraphElement } from '../visualizations/graphical/GraphicalSerializer';
 import { VisualisationIdentifier } from '../visualizations/index.types';
 import { WikidataEndpoint } from '../wikidata-endpoint';
 
@@ -6,12 +7,12 @@ export function getVisualization(
     endpoint: WikidataEndpoint,
     visId: VisualisationIdentifier
 ): HTMLElement {
-    // const query: string = data.children[0].innerHTML;
+    const query: string = data.children[0].innerHTML;
     let visElement: HTMLElement;
     if (visId === 'Table') {
         visElement = getTable();
     } else {
-        visElement = createGraphElement;
+        visElement = createGraphElement(query, visId, endpoint);
     }
     return visElement;
 }

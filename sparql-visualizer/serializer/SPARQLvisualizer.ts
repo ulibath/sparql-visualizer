@@ -1,16 +1,15 @@
+import { DATA_ATTRBIUTE_NAME, IFRAME_CLASS } from '../../dev-playground/variables';
 import { VisualisationIdentifier } from '../visualizations/index.types';
 import { WikidataEndpoint } from '../wikidata-endpoint';
 import { getVisualization } from './Serializer';
 
 export class SPARQLvisualizer {
-    public readonly iframeClass: string;
-    private endpoint: WikidataEndpoint;
-    private visId: VisualisationIdentifier;
+    private endpoint: WikidataEndpoint = null;
+    private visId: VisualisationIdentifier = null;
     private dataList: NodeList;
 
-    constructor(dataAttributeName: string, iframeClass: string) {
-        this.dataList = document.querySelectorAll('[data-' + dataAttributeName + ']');
-        this.iframeClass = iframeClass;
+    constructor() {
+        this.dataList = document.querySelectorAll(DATA_ATTRBIUTE_NAME);
     }
 
     public setEndpoint(endpoint: WikidataEndpoint): SPARQLvisualizer {
@@ -31,7 +30,7 @@ export class SPARQLvisualizer {
                 this.visId
             );
             if (this.visId !== 'Table') {
-                visElement.setAttribute('class', this.iframeClass);
+                visElement.setAttribute('class', IFRAME_CLASS);
             }
 
             if (data.childNodes.length > 1) {
