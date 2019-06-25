@@ -48,6 +48,9 @@ export function addDropdownSelection(id: string, options: Object[]): HTMLSelectE
             const tmpOption: HTMLOptionElement = document.createElement('option');
             tmpOption.value = '' + index;
             tmpOption.text = option.toString();
+            if (index === 0) {
+                tmpOption.defaultSelected;
+            }
             selectedElement.add(tmpOption);
         });
     }

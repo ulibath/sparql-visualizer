@@ -31,36 +31,26 @@
             <p>Here are some visualizations.</p>
             <div class="dropdown">
                 <div class="select-wrapper fa fa-angle-down">
-                    <select id="select-color">
-                        <option selected disabled>Farbe ändern</option>
-                        <option>Farbe 1</option>
-                        <option>Farbe 2</option>
-                        <option>Farbe 3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="dropdown">
-                <div class="select-wrapper fa fa-angle-down">
                     <select id="select-chart">
-                        <option selected disabled>Chart ändern</option>
+                        <option disabled>Chart ändern</option>
                     </select>
                 </div>
             </div>
             <div class="dropdown">
                 <div class="select-wrapper fa fa-angle-down">
                     <select id="select-endpoint">
-                        <option selected disabled>Endpoint ändern</option>
+                        <option disabled>Endpoint ändern</option>
                     </select>
                 </div>
             </div>
             <button id="refresh-button" class="refresh-button">Refresh</button>
             <div class="visualisation-wrapper resp-container" data-visualisation="BarChart">
-                <script type="test/plain" data-content="Configuration">
-                                      SELECT ?item WHERE {
+                <textarea class="textinput">
+                    SELECT ?item WHERE {
                     ?item wdt:P7 wd:Q12
-
                     }
-                </script>
+                 </textarea
+                >
             </div>
         </div>
         <div class="footer">
