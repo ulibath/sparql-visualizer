@@ -1,47 +1,18 @@
-import { VisualisationIdentifier } from '../sparql-visualizer/visualizations/index.types';
-import { WikidataEndpoint } from '../sparql-visualizer/wikidata-endpoint';
-import {
-    DEFAULT_WIKIDATA_CONFIG,
-    FU_WIKIDATA_CONFIG
-} from '../sparql-visualizer/wikidata-endpoint/Endpoint';
 import './style.scss';
-
-const endpointList: WikidataEndpoint[] = [];
-const visIdList: VisualisationIdentifier[] = [];
-let selectedVisIdPosition: number = 0;
-let selectedEndpointPosition: number = 0;
+import { ENDPOINT_LIST, VISUALIZATION_TYPES_LIST } from './variables';
 
 init();
 
-// TODO init serializer
-
 export function init(): void {
-    endpointList.push(new WikidataEndpoint(DEFAULT_WIKIDATA_CONFIG));
-    endpointList.push(new WikidataEndpoint(FU_WIKIDATA_CONFIG));
-
-    visIdList.push(
-        'BubbleChart',
-        'BarChart',
-        'Table',
-        'ScatterChart',
-        'AreaChart',
-        'Tree',
-        'Dimensions',
-        'Graph',
-        'Timeline',
-        'TreeMap',
-        'Map',
-        'ImageGrid',
-        'LineChart'
-    );
+    // TODO init serializer
 
     const visIdSelection: HTMLSelectElement | null = addDropdownSelection(
         'select-chart',
-        visIdList
+        VISUALIZATION_TYPES_LIST
     );
     const endpointSelection: HTMLSelectElement | null = addDropdownSelection(
         'select-endpoint',
-        endpointList
+        ENDPOINT_LIST
     );
     const refreshButton: HTMLButtonElement | null = document.getElementById(
         'refresh-button'
@@ -50,14 +21,14 @@ export function init(): void {
     if (visIdSelection) {
         visIdSelection.addEventListener('change', (event: Event) => {
             if (event.target instanceof HTMLSelectElement) {
-                selectedVisIdPosition = Number.parseInt(event.target.value, 10);
+                // TODO serializer.setVisId
             }
         });
     }
     if (endpointSelection) {
         endpointSelection.addEventListener('change', (event: Event) => {
             if (event.target instanceof HTMLSelectElement) {
-                selectedEndpointPosition = Number.parseInt(event.target.value, 10);
+                // TODO serializer.setEndpoint
             }
         });
     }
@@ -69,21 +40,20 @@ export function init(): void {
 }
 
 export function addDropdownSelection(id: string, options: Object[]): HTMLSelectElement {
-    const selectElement: HTMLSelectElement | null = document.getElementById(
+    const selectedElement: HTMLSelectElement | null = document.getElementById(
         id
     ) as HTMLSelectElement;
-    if (selectElement) {
+    if (selectedElement) {
         options.forEach((option: any, index) => {
             const tmpOption: HTMLOptionElement = document.createElement('option');
             tmpOption.value = '' + index;
             tmpOption.text = option.toString();
-            selectElement.add(tmpOption);
+            selectedElement.add(tmpOption);
         });
     }
-    return selectElement;
+    return selectedElement;
 }
 
 export function refreshVisualisation() {
-    console.log(endpointList[selectedEndpointPosition].toString());
-    console.log(visIdList[selectedVisIdPosition]);
+    // TODO serializer.build()
 }

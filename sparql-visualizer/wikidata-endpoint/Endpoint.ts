@@ -1,12 +1,12 @@
 type WikidataEndpointConfig = import('./index.types').WikidataEndpointConfig;
 
 export const DEFAULT_WIKIDATA_CONFIG: Required<WikidataEndpointConfig> = {
-    host: 'wikidata.org',
+    host: 'query-wikidata.org',
     httpProtocol: 'https'
 };
 
 export const FU_WIKIDATA_CONFIG: Required<WikidataEndpointConfig> = {
-    host: 'aghcc-edu01.imp.fu-berlin.de',
+    host: 'aghcc-edu01.imp.fu-berlin.de:8282',
     httpProtocol: 'http'
 };
 

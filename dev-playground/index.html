@@ -54,41 +54,11 @@
                 </div>
             </div>
             <button id="refresh-button" class="refresh-button">Refresh</button>
-            <div class="visualisation-wrapper" data-visualisation="BubbleChart">
-                <script type="application/json" data-content="Configuration">
-                    {
-                        query:
-                        `
-                        #
-                        Musikgenres
-                        #
-                        graph
-                        rendering
-                        could
-                        be
-                        slow
-                        due
-                        to
-                        large
-                        number
-                        of
-                        results
+            <div class="visualisation-wrapper resp-container" data-visualisation="BarChart">
+                <script type="test/plain" data-content="Configuration">
+                                      SELECT ?item WHERE {
+                    ?item wdt:P7 wd:Q12
 
-                        SELECT
-                        ?
-                        item
-                        ?
-                        itemLabel
-                        ?
-                        _subclass_of
-                        ?
-                        _subclass_ofLabel
-                        WHERE {
-                        ?item wdt:P31 wd: Q188451;
-                    wdt: P279 ?_subclass_of.
-                    SERVICE wikibase: label {bd: serviceParam wikibase:language "[AUTO_LANGUAGE],en".}
-                    } LIMIT 100
-                    `
                     }
                 </script>
             </div>
